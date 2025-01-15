@@ -5,7 +5,7 @@ resource "aws_alb" "webapp_alb" {
 }
 
 resource "aws_alb_target_group" "app" {
-  name        = "Target-Group"
+  name        = "webapp-Target-Group"
   port        = 8000
   protocol    = "HTTP"
   vpc_id      = aws_vpc.webapp_vpc.id
