@@ -35,7 +35,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
           # aws-region: ${{ inputs.AWS_REGION }} 
-          role-to-assume: "arn:aws:iam::${{ env.AWS_ACCOUNT }}:role/githubActionsRole"
+          role-to-assume: "arn:aws:iam::${{ vars.AWS_ACCOUNT }}:role/githubActionsRole"
 
       - name: Initialise project and view terraform plan
         run: |
