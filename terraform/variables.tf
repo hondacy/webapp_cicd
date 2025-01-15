@@ -1,5 +1,5 @@
 
-# Trigger workflows 1
+# Trigger workflows 2
 
 variable "aws_region" {
   description = "The AWS region things are created in"
