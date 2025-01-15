@@ -46,6 +46,9 @@ if $VSCODE_PID  &>/dev/null; then
 TF_LOG=debug terraform plan  ${tf_extra_args} -detailed-exitcode -var-file prod.tfvars -out ${planfile} > tfstdout_plan.out 2> tfstderr_plan.out
 plan_ret=$?
 # TF_LOG=debug terraform plan -lock=false -no-color -detailed-exitcode -var-file prod.tfvars -out ${planfile} > tfstdout_plan.out 2> tfstderr_plan.out
+          # terraform plan -no-color -detailed-exitcode -var-file prod.tfvars -out tfplan.out 
+          # echo 'disabled: > tfstdout_plan.out 2> tfstderr_plan.out'
+
 
 if $DEBUG_THE_DEBUG &>/dev/null; then
     echo " #> TF Plan return code: ${plan_ret}"

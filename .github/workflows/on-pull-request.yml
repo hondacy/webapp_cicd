@@ -4,11 +4,15 @@ on:
   workflow_dispatch:
   push:
     branches: 
-      - main
+      - dev
+    paths: ["terraform/**"]
+
+  pull_request:
+    branches: [main]
     paths: ["terraform/**"]
 
 jobs:
-  auto-provision-infra:
+  test-infra-with-terraform:
     name: Provision the necessary cloud resources for the web application
     runs-on: ubuntu-20.04 #ubuntu-latest
     environment: prod
@@ -32,9 +36,15 @@ jobs:
           # aws-region: ${{ inputs.AWS_REGION }} 
           role-to-assume: "arn:aws:iam::${{ vars.AWS_ACCOUNT }}:role/githubActionsRole"
 
+      - name: Initialise project and view terraform plan
+        run: |
+          terraform fmt
+          terraform init
           
-      - name: Terraform Apply
+      - name: Terraform plan
         id: plan
         # if: github.event_name == 'pull_request'
-        run: terraform apply tfplan.out 
+        run: terraform plan -no-color -input=false -out tfplan.out 
+        continue-on-error: true
+
      
