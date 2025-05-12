@@ -36,5 +36,5 @@ jobs:
       - name: Terraform Apply
         id: plan
         # if: github.event_name == 'pull_request'
-        run: terraform apply tfplan.out 
+        run: terraform apply
      
