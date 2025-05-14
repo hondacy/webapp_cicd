@@ -16,7 +16,7 @@ resource "aws_subnet" "webapp_subnet_1" {
   vpc_id                  = aws_vpc.webapp_vpc.id
   cidr_block              = cidrsubnet(aws_vpc.webapp_vpc.cidr_block, 8, 1)
   availability_zone       = "us-east-1a"
-  map_public_ip_on_launch = true
+  map_public_ip_on_launch = false
   tags = {
     Name = "WebApp-Subnet-1"
   }
@@ -26,7 +26,7 @@ resource "aws_subnet" "webapp_subnet_2" {
   vpc_id                  = aws_vpc.webapp_vpc.id
   cidr_block              = cidrsubnet(aws_vpc.webapp_vpc.cidr_block, 8, 2)
   availability_zone       = "us-east-1b"
-  map_public_ip_on_launch = true
+  map_public_ip_on_launch = false
   tags = {
     Name = "WebApp-Subnet-2"
   }
